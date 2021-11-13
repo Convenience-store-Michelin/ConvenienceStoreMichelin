@@ -1,4 +1,4 @@
-package com.convenience.convenience;
+package com.convenience;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
