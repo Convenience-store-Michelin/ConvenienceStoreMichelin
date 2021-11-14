@@ -1,4 +1,4 @@
-package com.convenience.convenience;
+package com.convenience;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
