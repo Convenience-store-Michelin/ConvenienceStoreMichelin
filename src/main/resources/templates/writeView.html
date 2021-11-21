@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>리뷰 작성하기</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimal-ui">
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <meta name="description" content="임시">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="임시">
+    <meta property="og:description" content="임시">
+    <meta property="og:url" content="">
+</head>
+<body>
+<div class="wrapper write-wrap">
+    <div class="container">
+        <div class="layout">
+            <form method="post">
+                <h2 class="h">리뷰 쓰기12345asd788</h2>
+                <div class="write-container">
+                    <div class="row">
+                        <select name="" ID="" class="selectbox">
+                            <option value="0">상품 대분류</option>
+                            <option value="1">카테고리1</option>
+                            <option value="2">카테고리2</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <label for="title" class="a11y">리뷰 제목</label>
+                        <input type="text" id="title" placeholder="제목">
+                    </div>
+                    <div class="row block">
+                        <label for="review" class="a11y">리뷰 본문</label>
+                        <textarea name="review" id="review" cols="42" rows="8" placeholder="내용"></textarea>
+                        <div class="text-length">
+                            <span>0</span>/<span class="max-length">2,200</span>
+                        </div>
+                    </div>
+                    <div class="row block hole">
+                        <label for="file" class="btn btn-thin bg-main">사진 첨부하기</label>
+                        <input type="file" name="" id="file" class="a11y">
+                        <div class="thumb"><!-- [D] 사진 추가하면 썸네일 생성 -->
+                            <img src="https://dummyimage.com/100x100/000/fff" alt="제품 사진">
+                            <button type="button" class="btn-delete bg-main"><span>삭제하기</span></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="findStore" class="a11y">편의점 찾기</label>
+                        <input type="text" id="findStore">
+                        <button type="button" class="btn btn-thin bg-main has-width">편의점 찾기</button>
+                    </div>
+                </div>
+                <div class="func">
+                    <button type="button" class="btn btn-cancel bg-gray">취소</button>
+                    <button type="submit" class="btn btn-submit bg-main">리뷰 등록하기</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</body>
+</html>
