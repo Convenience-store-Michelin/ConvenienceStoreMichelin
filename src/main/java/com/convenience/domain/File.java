@@ -20,19 +20,19 @@ public class File {
     private Long id;
 
     @Column(nullable = false)
-    private String origFilename;
+    private String originalFileName;
 
     @Column(nullable = false)
-    private String filename;
+    private String fileName;
 
     @Column(nullable = false)
     private String filePath;
 
     @Builder
-    public File(Long id, String origFilename, String filename, String filePath) {
+    public File(Long id, String originalFileName, String fileName, String filePath) {
         this.id = id;
-        this.origFilename = origFilename;
-        this.filename = filename;
+        this.originalFileName = originalFileName;
+        this.fileName = fileName;
         this.filePath = filePath;
     }
 }
