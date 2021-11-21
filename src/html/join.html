@@ -13,68 +13,72 @@
     <meta property="og:url" content="">
 </head>
 <body>
-    <div class="wrapper join-wrap">
-        <div class="container">
-            <div class="layout easing-input">
-                <form method="post">
-                    <div class="row form-group">
-                       <div class="inner">
-                           <label for="userId" class="form-label">이메일 주소</label>
-                            <input type="text" id="userId">
-                       </div>
-                        <p class="helper-desc">유효성 도움말 문구 말고 걍 인스타처럼 아이콘만 넣을까 싶기도 하고</p><!-- [D] 도움말 노출 클래스 is-visible -->
+<div class="wrapper join-wrap">
+    <div class="container">
+        <div class="layout easing-input">
+            <form method="post">
+                <div class="row form-group">
+                    <div class="inner">
+                        <label for="userId" class="form-label">이메일 주소</label>
+                        <input type="text" id="userId">
                     </div>
-                    <div class="row form-group">
-                        <div class="inner">
-                            <label for="userName" class="form-label">닉네임</label>
-                             <input type="text" id="userName">
-                        </div>
-                     </div>
-                    <div class="row form-group">
-                        <div class="inner">
-                            <label for="userPw" class="form-label">비밀번호</label>
-                            <input type="password" id="userPw">
-                        </div>
+                    <p class="helper-desc">유효성 도움말 문구 말고 걍 인스타처럼 아이콘만 넣을까 싶기도 하고</p><!-- [D] 도움말 노출 클래스 is-visible -->
+                </div>
+                <div class="row form-group">
+                    <div class="inner">
+                        <label for="userName" class="form-label">닉네임</label>
+                        <input type="text" id="userName">
                     </div>
-                    <div class="row form-group">
-                        <div class="inner">
-                            <label for="userPw1" class="form-label">비밀번호 확인</label>
-                            <input type="password" id="userPw1">
-                        </div>
+                </div>
+                <div class="row form-group">
+                    <div class="inner">
+                        <label for="userPw" class="form-label">비밀번호</label>
+                        <input type="password" id="userPw">
                     </div>
-                    <div class="row form-group secondary">
-                        <div class="inner">
-                            <p class="h">주소 (선택입력)</p>
-                            <label for="postcode" class="form-label">우편번호</label><!-- [D] : 주소 영역에 한해 API를 통해 주소가 입력되면 label 태그에 클래스 blind 추가해서 숨김 처리 -->
-                            <div class="hole">
-                                <input type="text" id="postcode" disabled>
-                                <button type="button" class="btn bg-main" onclick="execDaumPostcode()">우편번호 찾기</button>
-                            </div>
-                            <div id="addrWrap" style="display:none;border:1px solid;width:100%;height:300px;margin:25px 0 5px;position:relative">
-                                <img src="https://t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:-2px;top:-20px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
-                            </div>
-                        </div>
+                </div>
+                <div class="row form-group">
+                    <div class="inner">
+                        <label for="userPw1" class="form-label">비밀번호 확인</label>
+                        <input type="password" id="userPw1">
                     </div>
-                    <div class="row form-group">
-                        <div class="inner">
-                            <label for="address" class="form-label">주소</label>
-                            <input type="text" id="address" disabled>
+                </div>
+                <div class="row form-group secondary">
+                    <div class="inner">
+                        <p class="h">주소 (선택입력)</p>
+                        <label for="postcode" class="form-label">우편번호</label>
+                        <!-- [D] : 주소 영역에 한해 API를 통해 주소가 입력되면 label 태그에 클래스 blind 추가해서 숨김 처리 -->
+                        <div class="hole">
+                            <input type="text" id="postcode" disabled>
+                            <button type="button" class="btn bg-main" onclick="execDaumPostcode()">우편번호 찾기</button>
+                        </div>
+                        <div id="addrWrap"
+                             style="display:none;border:1px solid;width:100%;height:300px;margin:25px 0 5px;position:relative">
+                            <img src="https://t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap"
+                                 style="cursor:pointer;position:absolute;right:-2px;top:-20px;z-index:1"
+                                 onclick="foldDaumPostcode()" alt="접기 버튼">
                         </div>
                     </div>
-                    <div class="row form-group">
-                        <div class="inner">
-                            <label for="detailAddress" class="form-label">상세주소</label>
-                            <input type="text" id="detailAddress">
-                        </div>
+                </div>
+                <div class="row form-group">
+                    <div class="inner">
+                        <label for="address" class="form-label">주소</label>
+                        <input type="text" id="address" disabled>
                     </div>
-                    <div class="row form-group">
-                        <div class="inner">
-                            <label for="extraAddress" class="form-label">참고항목</label>
-                            <input type="text" id="extraAddress">
-                        </div>
+                </div>
+                <div class="row form-group">
+                    <div class="inner">
+                        <label for="detailAddress" class="form-label">상세주소</label>
+                        <input type="text" id="detailAddress">
                     </div>
-                    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-                    <script>
+                </div>
+                <div class="row form-group">
+                    <div class="inner">
+                        <label for="extraAddress" class="form-label">참고항목</label>
+                        <input type="text" id="extraAddress">
+                    </div>
+                </div>
+                <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+                <script>
                         // 우편번호 찾기 찾기 화면을 넣을 element
                         var element_wrap = document.getElementById('addrWrap');
                 
@@ -148,17 +152,19 @@
                             // iframe을 넣은 element를 보이게 한다.
                             element_wrap.style.display = 'block';
                         }
-                    </script>
-                    <div class="row func align-center">
-                        <button type="submit" class="btn btn-submit bg-main">가입하기</button>
-                    </div>
-                    <div class="row align-right misc-box">
-                        <p>계정이 있으신가요? <a href="login.html" class="color-main bold">로그인</a></p>
-                    </div>
-                </form>
-            </div>
+
+                </script>
+                <div class="row func align-center">
+                    <button type="submit" class="btn btn-submit bg-main">가입하기</button>
+                </div>
+                <div class="row align-right misc-box">
+                    <p>계정이 있으신가요? <a href="login.html" class="color-main bold">로그인</a></p>
+                </div>
+            </form>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </body>
 </html>
