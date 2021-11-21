@@ -70,6 +70,11 @@
                 oncomplete: function(data) {
                     // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분
                     console.log("data.roadAddress : " + data.roadAddress);
+                    var url = 'http://localhost:8080/review/findStorePopup?' +
+                              'roadAddress=' + data.roadAddress +
+                              '&jibunAddress=' + data.jibunAddress;
+                    var option = 'width = 500, height = 400';
+                    window.open(url, "findStorePopup", option);
                 }
             }).open();
         });

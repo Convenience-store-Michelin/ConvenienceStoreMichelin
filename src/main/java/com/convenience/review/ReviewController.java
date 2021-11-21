@@ -14,4 +14,9 @@ public class ReviewController {
         return "writeView";
     }
 
+    @GetMapping("/findStorePopup")
+    public String findStoreView(Model model) {
+        return "findStorePopup";
+    }
+
 }
