@@ -1,0 +1,369 @@
+@import 'reset.css';
+
+a{color:#333;}
+html, body{min-height:100%;}
+select:focus, input:focus, textarea:focus{outline: 0;}
+.a11y{
+    position: absolute !important;
+    overflow: hidden;
+    padding: 0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+.wrapper{min-height: 100%;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    box-sizing:border-box;
+}
+.container .layout{padding:15px 10px 30px;}
+.layout{margin:0 auto;max-width: 980px;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    box-sizing:border-box;
+}
+.layout::after{content:'';display:table;clear: both;}
+.blind{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(1px 1px 1px 1px);clip:rect(1px,1px,1px,1px)}
+.bold{font-weight: 600!important;}
+.fixed-nav{z-index:10;position:fixed;bottom:0;left:0;width: 100%; background:rgb(26, 188, 156);overflow: hidden;}
+.fixed-nav .menu{position: relative; float:left;width:25%;height: 50px;text-align: center;}
+.fixed-nav a{position: absolute;top:50%;left: 50%; max-height: 50px;
+    -webkit-transform:translate(-50%,-50%); 
+    transform:translate(-50%,-50%);
+}
+.fixed-nav .my a{width: 45px;height: 45px;}
+.fixed-nav .list a{width: 52px;height: 52px;}
+.fixed-nav .temp a{width: 35px;height: 35px;}
+.fixed-nav .setting a{width: 32px;height: 32px;}
+[data-svg-content]{width: 100%;height: 100%;}
+
+.post-list{padding-bottom: 50px;}
+.post-list .post{position: relative;padding:15px 15px 15px 115px;border:1px solid #ccc;border-radius:10px;}
+.post-list .post>a{display: block;}
+.post-list .post+.post{margin-top: 10px;}
+.post-list .item-img{position: absolute;top:15px;left:15px;}
+.post-list .item-img img{width: 87px;height:87px;}
+.post-list .item-desc{min-height:87px;}
+.post-list .item-desc dt{padding-right: 100px; font-size: 17px; font-weight: 600;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.post-list .item-desc dd{font-size: 14px;overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.post-list .temp-desc{position: absolute;top:15px;right:15px;}
+
+/* 로그인 */
+
+input{
+    border-radius: 0;
+}
+.wrapper.login-wrap{
+    padding-bottom: 0;
+}
+.login-wrap .header{
+    padding-top: 40px;    
+}
+.login-wrap .header .logo{
+    margin: 0 auto;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+}
+.login-wrap .header .logo a{
+    display:  block;
+    font-weight: normal;
+}
+.easing-input{
+    max-width: 375px;
+    box-sizing: border-box;
+}
+.easing-input .row{
+    margin-top: 60px;
+}
+.easing-input .row ~ .row{
+    margin-top: 20px;
+}
+.easing-input .row.secondary ~ .row{
+    margin-top:15px;
+}
+.easing-input .inner{
+    position: relative;
+}
+.easing-input input{
+    width: 100%;
+    padding: 5px 15px;
+    font: 15px/24px "Lato", Arial, sans-serif;
+    outline: 0;
+    background-color: #f9fafb;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 2%);
+    box-sizing: border-box;
+    -webkit-transition:background-color .2s ease;
+    transition:background-color .2s ease;
+}
+.easing-input label{
+    display: inline-block;
+    padding: 0 4px;
+    margin-bottom: 6px;
+    color: #aaa;
+    letter-spacing: -.5px;
+}
+.easing-input .form-row label{
+    display: block;
+}
+.easing-input .form-group:focus-within .form-label{
+    color: #1abc9c;
+}
+.easing-input .form-group:focus-within input{
+    background-color: #f7fffe;
+}
+.easing-input .helper-desc{
+    display: none;
+    font-size: 12px;
+}
+.easing-input .helper-desc.is-visible{
+    display: block;
+}
+.easing-input .row.func{
+    margin-top: 30px!important;
+}
+.easing-input .hole{
+    display: -ms-flexbox;
+    display: flex;
+}
+.easing-input .hole input,
+.easing-input .hole button{white-space: nowrap;}
+.easing-input .hole button{
+    padding: 0 10px;
+    margin-left: 10px;
+    color: #fff;
+    line-height: 35px;
+    border-radius: 5px;
+}
+.easing-input .form-group p{
+    margin-bottom: 15px;
+}
+.color-main{
+    color:#1abc9c!important;
+}
+.bg-main{
+    background-color: #1abc9c;
+}
+.bg-gray{
+    background-color: #eee;
+}
+button{
+    border:0;
+    background-color: transparent;
+}
+.btn{
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.btn-submit{
+    padding: 12px 10px !important;
+    margin: 0 auto;
+    width: 100%;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+}
+.login-wrap .row.misc-box{
+    margin-top: 20px;
+}
+.login-wrap .row.misc-box p,
+.login-wrap .row.misc-box a{
+    font-size: 13px;
+    color: #aaa;
+}
+.login-wrap .row.misc-box p ~ p{
+    margin-top: 5px;
+}
+.align-left{
+    text-align: left!important;
+}
+.align-center{
+    text-align: center!important;
+}
+.align-right{
+    text-align: right!important;
+}
+.form-row{
+    position: relative;
+    margin-top: 15px;
+}
+.join-wrap .row:first-child{
+    margin-top: 30px;
+}
+
+/* 리뷰 작성 */
+
+.write-wrap h2.h{
+    display: block;
+    margin-bottom: 20px;
+    font-size: 16px;
+    text-align: center;
+}
+.write-wrap .row{
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    padding: 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+}
+.write-wrap .selectbox{
+    padding:5px;
+    width: 40%;
+    max-width: 200px;
+    height: 30px;
+    line-height: 100%;
+    text-align: left;
+    border: 0;
+}
+.write-wrap input{
+    height: 34px;
+    font-size: 14px;
+}
+.write-wrap textarea{
+    height: 30vh;
+}
+.write-wrap input,
+.write-wrap textarea{
+    padding: 7px 10px;
+    width: 100%;
+    border: 0;
+    box-sizing: border-box;
+}
+.write-wrap .row.block{
+    display: block;
+}
+.write-wrap .row.hole{
+    padding-left: 0;
+    padding-right: 0;
+}
+.write-wrap .text-length{
+    color: #aaa;
+    text-align: right;
+}
+.write-wrap .btn{
+    padding: 10px;
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+}
+.write-wrap .btn.bg-main{
+    color: #fff;
+}
+.write-wrap .btn.btn-thin{
+    line-height: 100%;
+}
+.write-wrap .btn.has-width{
+    display: inline-block;
+    margin-left: 10px;
+    width: auto;
+    white-space: nowrap;
+}
+.write-wrap label{
+    display: inline-block;
+}
+.write-wrap .thumb{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+}
+.write-wrap .thumb .btn-delete{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 0;
+}
+.write-wrap .thumb .btn-delete span{
+    display: block;
+    position: relative;
+    line-height: 30px;
+    text-indent: -9999em;
+}
+.write-wrap .thumb .btn-delete span:before,
+.write-wrap .thumb .btn-delete span:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 30px;
+    width: 2px;
+    background-color: #fff;
+}
+.write-wrap .thumb .btn-delete span:before {
+    transform: rotate(45deg);
+}
+.write-wrap .thumb .btn-delete span:after {
+    transform: rotate(-45deg);
+}
+.write-wrap .func{
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 30px;
+}
+.write-wrap .func .btn{
+    margin: 0 5px;
+}
+.write-wrap .func .btn:first-child{
+    margin-left: 0;
+}
+.write-wrap .func .btn:last-child{
+    margin-right: 0;
+}
+
+/* 뷰 페이지 */
+
+.view-wrap .container>.layout{
+    padding-top: 0;
+}
+.view-wrap .item-img{
+    margin-bottom: 10px;
+    text-align: center;
+}
+.view-wrap h2.h{
+    display: block;
+    margin: 5px 0 10px;
+    line-height: 1.3;
+}
+.view-wrap .category-date{
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-between;
+}
+.view-wrap .date{
+    color:#aaa;
+}
+.view-wrap .item-tag{
+    margin-bottom: 20px;
+}
+.view-wrap .item-tag>a{
+    display: inline-block;
+    padding: 0 10px;
+    color: #fff;
+    line-height: 25px;
+    background-color: #1abc9c;
+    border-radius: 15px;
+}
+.view-wrap .func{
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+}
+.view-wrap .func a{
+    display: inline-block;
+    padding: 0 10px;
+    line-height: 30px;
+    background-color: #eee;
+    border-radius: 5px;
+}
