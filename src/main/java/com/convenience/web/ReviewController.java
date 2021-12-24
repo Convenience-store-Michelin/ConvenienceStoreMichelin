@@ -16,12 +16,17 @@ public class ReviewController {
         this.reviewService = reviewService;
     }
 
+    @GetMapping("/reviews/list")
+    public String reviewList(){
+        return "index";
+    }
+
     @GetMapping("/reviews/new")
     public String createForm(){
         return "write";
     }
 
-    @PostMapping("reviews/new")
+    @PostMapping("/reviews/new")
     public String create(){
 
         return "";
