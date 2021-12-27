@@ -53,6 +53,12 @@ select:focus, input:focus, textarea:focus{outline: 0;}
     -webkit-box-orient: vertical;
 }
 .post-list .temp-desc{position: absolute;top:15px;right:15px;}
+.btn-write-review{position: fixed;bottom:70px;right:15px;width:56px;height: 56px;text-align:left;overflow:hidden;text-indent:-9999em;background-color:rgb(26, 188, 156);border-radius: 50%; box-shadow: rgb(101 119 134 / 20%) 0px 0px 8px, rgb(101 119 134 / 25%) 0px 1px 3px 1px;}
+.btn-write-review>span{position: relative;display: block;height: 100%;}
+.btn-write-review>span::after,
+.btn-write-review>span::before{content: "";position: absolute;top:50%;left:50%;background:#fff;transform: translate(-50%, -50%);}
+.btn-write-review>span::after{width:2px;height:30px;}
+.btn-write-review>span::before{width: 30px;height:2px;}
 
 /* 로그인 */
 
