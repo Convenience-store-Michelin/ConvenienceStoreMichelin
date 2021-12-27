@@ -30,7 +30,7 @@ select:focus, input:focus, textarea:focus{outline: 0;}
 .fixed-nav{z-index:10;position:fixed;bottom:0;left:0;width: 100%; background:rgb(26, 188, 156);overflow: hidden;}
 .fixed-nav .menu{position: relative; float:left;width:25%;height: 50px;text-align: center;}
 .fixed-nav a{position: absolute;top:50%;left: 50%; max-height: 50px;
-    -webkit-transform:translate(-50%,-50%); 
+    -webkit-transform:translate(-50%,-50%);
     transform:translate(-50%,-50%);
 }
 .fixed-nav .my a{width: 45px;height: 45px;}
@@ -69,7 +69,7 @@ input{
     padding-bottom: 0;
 }
 .login-wrap .header{
-    padding-top: 40px;    
+    padding-top: 40px;
 }
 .login-wrap .header .logo{
     margin: 0 auto;
@@ -371,5 +371,5 @@ button{
     padding: 0 10px;
     line-height: 30px;
     background-color: #eee;
-    border-radius: 5px;
+    border-radius:5px;
 }
