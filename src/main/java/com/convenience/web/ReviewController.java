@@ -1,10 +1,13 @@
 package com.convenience.web;
 
+import com.convenience.domain.Review;
 import com.convenience.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class ReviewController {
@@ -27,9 +30,12 @@ public class ReviewController {
     }
 
     @PostMapping("/reviews/new")
-    public String create(){
+    public String create(@Valid Review form){
 
-        return "";
+
+        reviewService.create(form);
+
+        return "index";
     }
 
 }

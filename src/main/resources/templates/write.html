@@ -16,7 +16,8 @@
     <div class="wrapper write-wrap">
         <div class="container">
             <div class="layout">
-                <form method="post">
+                <form method="post" action="/reviews/new">
+                    <input type="hidden" id="author" name="author" value="작성자">
                     <h2 class="h">리뷰 쓰기</h2>
                     <div class="write-container">
                         <div class="row">
@@ -28,11 +29,11 @@
                         </div>
                         <div class="row">
                             <label for="title" class="a11y">리뷰 제목</label>
-                            <input type="text" id="title" placeholder="제목">
+                            <input type="text" id="title" name="title" placeholder="제목">
                         </div>
                         <div class="row block">
-                            <label for="review" class="a11y">리뷰 본문</label>
-                            <textarea name="review" id="review" cols="42" rows="8" placeholder="내용"></textarea>
+                            <label for="content" class="a11y">리뷰 본문</label>
+                            <textarea name="content" id="content" cols="42" rows="8" placeholder="내용"></textarea>
                             <div class="text-length">
                                 <span>0</span>/<span class="max-length">2,200</span>
                             </div>
