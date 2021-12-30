@@ -38,11 +38,18 @@
                             </div>
                         </div>
                         <div class="row block hole">
-                            <label for="file" class="btn btn-thin bg-main">사진 첨부하기</label>
-                            <input type="file" name="" id="file" class="a11y">
+                            <form id="upload-file-form">
+                                <label for="image_file" class="btn btn-thin bg-main">사진 첨부하기</label>
+                                <input type="file" id="image_file" class="a11y" accept="image/*" onchange="loadFile(this)">
+                            </form>
                             <div class="thumb"><!-- [D] 사진 추가하면 썸네일 생성 -->
-                                <img src="https://dummyimage.com/100x100/000/fff" alt="제품 사진">
-                                <button type="button" class="btn-delete bg-main"><span>삭제하기</span></button>
+                                <img src="https://dummyimage.com/100x100/000/fff" id="image_view" alt="제품 사진">
+                                <button type="button" class="btn-delete bg-main" onclick="cancelLoadedFile()"><span>삭제하기</span></button>
+                            <label for="image_file" class="btn btn-thin bg-main">사진 첨부하기</label>
+                            <input type="file" id="image_file" class="a11y" accept="image/*" onchange="loadFile(this)">
+                            <div class="thumb"><!-- [D] 사진 추가하면 썸네일 생성 -->
+                                <img src="https://dummyimage.com/100x100/000/fff" id="image_view" alt="제품 사진">
+                                <button type="button" class="btn-delete bg-main" onclick="cancelFile()"><span>삭제하기</span></button>
                             </div>
                         </div>
                         <div class="row">
@@ -60,5 +67,45 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        function loadFile(input) {
+            var file = input.files[0];	//선택된 파일 가져오기
+            var image_view = document.getElementById("image_view");
+            //이미지 source 가져오기
+            image_view.src = URL.createObjectURL(file);
+
+            //image_view.style.width = "70%";
+            //image_view.style.height = "70%";
+            image_view.style.objectFit = "cover";
+            uploadFile(file);
+        }
+
+        function cancelLoadedFile() {
+            var default_image = "https://dummyimage.com/100x100/000/fff";
+            var image_view = document.getElementById("image_view");
+            image_view.src = default_image;
+        }
+
+        function uploadFile(file) {
+            var form = new FormData();
+            form.append("file", file);
+
+            $.ajax({
+                url: "/file/upload",
+                type: "POST",
+                data: form,
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function () {
+                    alert("파일 업로드 성공");
+                } ,
+                error: function () {
+                    alert("파일 업로드 실패");
+                }
+            })
+        }
+    </script>
 </body>
 </html>
