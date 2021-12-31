@@ -2,6 +2,7 @@ package com.convenience.web;
 
 import com.convenience.domain.Review;
 import com.convenience.service.ReviewService;
+import com.convenience.web.dto.ReviewDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +12,7 @@ import javax.validation.Valid;
 
 @Controller
 public class ReviewController {
-
     private final ReviewService reviewService;
-
     @Autowired
     public ReviewController(ReviewService reviewService){
         this.reviewService = reviewService;
@@ -30,12 +29,8 @@ public class ReviewController {
     }
 
     @PostMapping("/reviews/new")
-    public String create(@Valid Review form){
-
-
-        reviewService.create(form);
-
+    public String create(@Valid ReviewDto reviewDto){
+        reviewService.create(reviewDto);
         return "index";
     }
-
 }
