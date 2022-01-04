@@ -5,7 +5,7 @@
     <title>Temp</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimal-ui">
-    <link th:href="@{/assets/css/style.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/css/style.css">
     <meta name="description" content="임시">
     <meta property="og:type" content="website">
     <meta property="og:title" content="임시">
@@ -56,6 +56,9 @@
                         <button type="button" class="btn btn-cancel bg-gray">취소</button>
                         <button type="submit" class="btn btn-submit bg-main">리뷰 등록하기</button>
                     </div>
+                    <input type="hidden" name="storeBrand" id="storeBrand" value="" />
+                    <input type="hidden" name="storeName" id="storeName" value="" />
+                    <input type="hidden" name="storeLocation" id="storeLocation" value="" />
                 </form>
             </div>
         </div>
@@ -71,7 +74,7 @@
                     oncomplete: function(data) {
                         // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분
                         console.log("data.roadAddress : " + data.roadAddress);
-                        var url = 'http://localhost:8080/review/findStorePopup?' +
+                        var url = '/findStorePopup.html?' +
                                   'roadAddress=' + data.roadAddress +
                                   '&jibunAddress=' + data.jibunAddress;
                         var option = 'width = 500, height = 400';

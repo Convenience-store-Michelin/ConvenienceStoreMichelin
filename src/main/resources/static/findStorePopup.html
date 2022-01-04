@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimal-ui">
     <meta name="description" content="임시">
-    <link th:href="@{/assets/css/popup.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/css/popup.css">
 </head>
 <body>
 <div class="map_wrap">
@@ -30,7 +30,7 @@
     var geocoder = new kakao.maps.services.Geocoder();
 
     // 주소로 좌표를 검색합니다
-    geocoder.addressSearch('[[${param.roadAddress}]]', function(result, status) {
+    geocoder.addressSearch(searchParam('roadAddress'), function(result, status) {
 
         // 정상적으로 검색이 완료됐으면
         if (status === kakao.maps.services.Status.OK) {
@@ -70,9 +70,9 @@
     function addEventHandle(target, type, callback) {
         if (target.addEventListener) {
             target.addEventListener(type, callback);
-        } else {
-            target.attachEvent('on' + type, callback);
+            return;
         }
+        target.attachEvent('on' + type, callback);
     }
 
     // 카테고리 검색을 요청하는 함수입니다
@@ -95,10 +95,14 @@
         if (status === kakao.maps.services.Status.OK) {
             // 정상적으로 검색이 완료됐으면 지도에 마커를 표출합니다
             displayPlaces(data);
-        } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+        }
+        if (status === kakao.maps.services.Status.ZERO_RESULT) {
             // 검색결과가 없는경우 해야할 처리가 있다면 이곳에 작성해 주세요
-        } else if (status === kakao.maps.services.Status.ERROR) {
+            console.log("placesSearchCB result : ZERO_RESULT");
+        }
+        if (status === kakao.maps.services.Status.ERROR) {
             // 에러로 인해 검색결과가 나오지 않은 경우 해야할 처리가 있다면 이곳에 작성해 주세요
+            console.log("placesSearchCB result : ERROR");
         }
     }
 
@@ -108,17 +112,16 @@
         // 몇번째 카테고리가 선택되어 있는지 얻어옵니다
         // 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
         for ( var i=0; i<places.length; i++ ) {
+            // 마커를 생성하고 지도에 표시합니다
+            var marker = addMarker(new kakao.maps.LatLng(places[i].y, places[i].x));
 
-                // 마커를 생성하고 지도에 표시합니다
-                var marker = addMarker(new kakao.maps.LatLng(places[i].y, places[i].x));
-
-                // 마커와 검색결과 항목을 클릭 했을 때
-                // 장소정보를 표출하도록 클릭 이벤트를 등록합니다
-                (function(marker, place) {
-                    kakao.maps.event.addListener(marker, 'click', function() {
-                        displayPlaceInfo(place);
-                    });
-                })(marker, places[i]);
+            // 마커와 검색결과 항목을 클릭 했을 때
+            // 장소정보를 표출하도록 클릭 이벤트를 등록합니다
+            (function(marker, place) {
+                kakao.maps.event.addListener(marker, 'click', function() {
+                    displayPlaceInfo(place);
+                });
+            })(marker, places[i]);
         }
     }
 
@@ -126,7 +129,7 @@
     function addMarker(position) {
         var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
             imageSize = new kakao.maps.Size(27, 28),  // 마커 이미지의 크기
-            imgOptions =  {
+            imgOptions = {
                 spriteSize : new kakao.maps.Size(72, 208), // 스프라이트 이미지의 크기
                 spriteOrigin : new kakao.maps.Point(46, (5*36)), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
                 offset: new kakao.maps.Point(11, 28) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
@@ -138,7 +141,7 @@
             });
 
         marker.setMap(map); // 지도 위에 마커를 표출합니다
-        markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+        markers.push(marker); // 배열에 생성된 마커를 추가합니다
 
         return marker;
     }
@@ -153,17 +156,17 @@
 
     // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
     function displayPlaceInfo (place) {
-        var content = '<div class="placeinfo" onclick="sendDataToParentsWindows(\'' + place.place_name + '\')">' +
+        var content = '<div class="placeinfo" onclick="sendDataToParentsWindows(\'' + place.place_name + '\',\'' + place.address_name + '\')">' +
                         '   <a class="title" href="#" title="' + place.place_name + '">' + place.place_name + '</a>';
 
         if (place.road_address_name) {
-            content += '    <span title="' + place.road_address_name + '">' + place.road_address_name + '</span>' +
-                        '  <span class="jibun" title="' + place.address_name + '">(지번 : ' + place.address_name + ')</span>';
-        }  else {
-            content += '    <span title="' + place.address_name + '">' + place.address_name + '</span>';
+            content += '<span title="' + place.road_address_name + '">' + place.road_address_name + '</span>' +
+                        '<span class="jibun" title="' + place.address_name + '">(지번 : ' + place.address_name + ')</span>';
+        } else {
+            content += '<span title="' + place.address_name + '">' + place.address_name + '</span>';
         }
 
-        content += '    <span class="tel">' + place.phone + '</span>' +
+        content += '<span class="tel">' + place.phone + '</span>' +
                     '</div>' +
                     '<div class="after"></div>';
 
@@ -172,8 +175,19 @@
         placeOverlay.setMap(map);
     }
 
-    function sendDataToParentsWindows(storeName) {
-        opener.document.getElementById("findStore").value = storeName;
+    function searchParam(key) {
+        return new URLSearchParams(location.search).get(key);
+    };
+
+    function sendDataToParentsWindows(placeName, addressName) {
+        var storeNames = placeName.split(' ');
+        var addressNames = addressName.split(' ');
+
+        opener.document.getElementById("findStore").value = placeName;
+        opener.document.getElementById("storeBrand").value = storeNames[0];
+        opener.document.getElementById("storeName").value = storeNames[1];
+        opener.document.getElementById("storeLocation").value = addressNames[2];
+
         window.close();
     }
 
