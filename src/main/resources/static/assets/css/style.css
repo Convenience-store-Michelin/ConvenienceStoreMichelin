@@ -360,6 +360,13 @@ button{
     background-color: #1abc9c;
     border-radius: 15px;
 }
+.view-wrap .review-hash{
+    margin-top: 5px;
+}
+.view-wrap .review-hash>button{
+    display: inline-block;
+    color: #888;
+}
 .view-wrap .func{
     display: -ms-flexbox;
     display: flex;
