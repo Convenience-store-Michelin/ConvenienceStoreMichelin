@@ -10,3 +10,4 @@ import javax.persistence.EntityManager;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Long> {
 }
+

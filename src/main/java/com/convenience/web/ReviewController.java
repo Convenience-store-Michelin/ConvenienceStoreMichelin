@@ -20,26 +20,27 @@ public class ReviewController {
         this.reviewService = reviewService;
     }
 
-    @GetMapping("/reviews/list")
+    @GetMapping("/review/list")
     public String reviewList(Model model){
         model.addAttribute("reviews", reviewService.findAll());
         return "index";
     }
 
-    @GetMapping("/reviews/view")
+    @GetMapping("/review/view")
     public String reviewView(Model model, @RequestParam(value ="id") Long id){
         model.addAttribute("review", reviewService.findById(id).orElseThrow(IllegalAccessError::new));
         return "view";
     }
 
-    @GetMapping("/reviews/new")
+    @GetMapping("/review/new")
     public String createForm(){
         return "write";
     }
 
-    @PostMapping("/reviews/new")
+    @PostMapping("/review/new")
     public String create(@Valid ReviewDto reviewDto){
         reviewService.create(reviewDto);
         return "index";
     }
 }
+
