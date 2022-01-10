@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Temp</title>
@@ -49,18 +49,42 @@
                         </div>
                         <div class="row">
                             <label for="findStore" class="a11y">편의점 찾기</label>
-                            <input type="text" id="findStore" disabled>
-                            <button type="button" class="btn btn-thin bg-main has-width">편의점 찾기</button>
+                            <input type="text" id="findStore" placeholder="편의점 이름" readonly onclick="execPostCode()">
+                            <button type="button" class="btn btn-thin bg-main has-width" onclick="execPostCode()">편의점 찾기
+                            </button>
                         </div>
                     </div>
                     <div class="func">
                         <button type="button" class="btn btn-cancel bg-gray">취소</button>
                         <button type="submit" class="btn btn-submit bg-main">리뷰 등록하기</button>
                     </div>
+                    <input type="hidden" name="storeBrand" id="storeBrand" value="" />
+                    <input type="hidden" name="storeName" id="storeName" value="" />
+                    <input type="hidden" name="storeLocation" id="storeLocation" value="" />
                 </form>
             </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
+    <script>
+        // 다음 우편번호 서비스 참고 url : https://postcode.map.daum.net/guide
+
+        function execPostCode() {
+            daum.postcode.load(function() {
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분
+                        console.log("data.roadAddress : " + data.roadAddress);
+                        var url = '/findStorePopup.html?' +
+                                  'roadAddress=' + data.roadAddress +
+                                  '&jibunAddress=' + data.jibunAddress;
+                        var option = 'width = 500, height = 400';
+                        window.open(url, "findStorePopup", option);
+                    }
+                }).open();
+            });
+        }
+    </script>
 </body>
 </html>
