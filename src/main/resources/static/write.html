@@ -5,7 +5,7 @@
     <title>Temp</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimal-ui">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <meta name="description" content="임시">
     <meta property="og:type" content="website">
     <meta property="og:title" content="임시">
@@ -16,11 +16,12 @@
     <div class="wrapper write-wrap">
         <div class="container">
             <div class="layout">
-                <form method="post">
+                <form method="post" action="/reviews/new">
+                    <input type="hidden" id="author" name="author" value="작성자">
                     <h2 class="h">리뷰 쓰기</h2>
                     <div class="write-container">
                         <div class="row">
-                            <select name="" id="" class="selectbox">
+                            <select name="category" id="category" class="selectbox">
                                 <option value="0">상품 대분류</option>
                                 <option value="1">카테고리1</option>
                                 <option value="2">카테고리2</option>
@@ -28,11 +29,12 @@
                         </div>
                         <div class="row">
                             <label for="title" class="a11y">리뷰 제목</label>
-                            <input type="text" id="title" placeholder="제목">
+                            <input type="text" id="title" name="title" placeholder="제목">
                         </div>
                         <div class="row block">
-                            <label for="review" class="a11y">리뷰 본문</label>
-                            <textarea name="review" id="review" cols="42" rows="8" placeholder="내용"></textarea>
+                            <label for="content" class="a11y">리뷰 본문</label>
+                            <textarea name="content" id="content" cols="42" rows="8" placeholder="내용"></textarea>
+
                             <div class="text-length">
                                 <span>0</span>/<span class="max-length">2,200</span>
                             </div>

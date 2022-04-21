@@ -1,11 +1,13 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>Temp</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimal-ui">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <meta name="description" content="임시">
     <meta property="og:type" content="website">
     <meta property="og:title" content="임시">
@@ -13,6 +15,76 @@
     <meta property="og:url" content="">
 </head>
 <body>
+<div class="wrapper">
+    <header><span class="blind">뒤로가기 버튼 때문에라도 있기는 있어야 할 것 같기도 하고..</span></header>
+    <div class="container">
+        <div class="layout">
+            <div class="post-list">
+                <div class="post" th:each="review:${reviews}">
+                    <a th:href="@{view(id=${review.id})}">
+                        <div class="item-img">
+                            <img src="assets/images/item01.jpg" alt="죠리퐁당">
+                        </div>
+                        <div class="item-desc">
+                            <dl>
+                                <dt th:text="${review.title}">title</dt>
+                                <dd th:text="${review.content}">content</dd>
+                            </dl>
+                            <span class="temp-desc" th:text="${#temporals.format(review.modDate, 'yyyy-MM-dd HH:mm:ss')}">modDate</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fixed-nav">
+        <div class="layout">
+            <div class="menu my">
+                <span class="blind">마이페이지</span>
+                <a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"
+                         data-svg-content="true" fill="rgb(255, 255, 255)">
+                        <path d="M24 24c4.42 0 8-3.59 8-8 0-4.42-3.58-8-8-8s-8 3.58-8 8c0 4.41 3.58 8 8 8zm0 4c-5.33 0-16 2.67-16 8v4h32v-4c0-5.33-10.67-8-16-8z"></path>
+                    </svg>
+                </a>
+            </div>
+            <div class="menu list">
+                <span class="blind">리뷰 목록</span>
+                <a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32"
+                         height="32" viewBox="0 0 32 32" fill="rgb(255, 255, 255)" data-svg-content="true">
+                        <g>
+                            <path d="M 7,16l 18,0 C 25.552,16, 26,15.552, 26,15C 26,14.448, 25.552,14, 25,14l-18,0 C 6.448,14, 6,14.448, 6,15 C 6,15.552, 6.448,16, 7,16zM 7,10l 18,0 C 25.552,10, 26,9.552, 26,9C 26,8.448, 25.552,8, 25,8l-18,0 C 6.448,8, 6,8.448, 6,9 C 6,9.552, 6.448,10, 7,10zM 7,22l 18,0 c 0.552,0, 1-0.448, 1-1c0-0.552-0.448-1-1-1l-18,0 C 6.448,20, 6,20.448, 6,21 C 6,21.552, 6.448,22, 7,22z"></path>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <div class="menu temp">
+                <span class="blind">임시</span>
+                <a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32"
+                         height="32" viewBox="0 0 32 32" fill="rgb(255, 255, 255)" data-svg-content="true">
+                        <g>
+                            <path d="M 13.774,26.028A2.060,2.060 1080 1 0 17.894,26.028A2.060,2.060 1080 1 0 13.774,26.028zM 19.464,18.252c 2.898-1.596, 4.37-3.91, 4.37-6.876c0-5.094-4.018-7.376-8-7.376c-3.878,0-8,2.818-8,8.042 c0,1.104, 0.894,2, 2,2s 2-0.896, 2-2c0-2.778, 2.074-4.042, 4-4.042c 1.494,0, 4,0.438, 4,3.376c0,1.042-0.274,2.258-2.298,3.374 C 16.16,15.504, 13.834,17.462, 13.834,20c0,1.104, 0.894,2, 2,2s 2-0.896, 2-2C 17.834,19.628, 18.624,18.714, 19.464,18.252z"></path>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <div class="menu setting">
+                <span class="blind">설정</span>
+                <a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32"
+                         height="32" viewBox="0 0 32 32" fill="rgb(255, 255, 255)" data-svg-content="true">
+                        <g>
+                            <path d="M 27.526,12.682c-0.252-0.876-0.594-1.71-1.028-2.492l 1.988-4.182c-0.738-0.92-1.574-1.756-2.494-2.494 l-4.182,1.988c-0.78-0.432-1.616-0.776-2.492-1.028L 17.762,0.102C 17.184,0.038, 16.596,0, 16,0S 14.816,0.038, 14.238,0.102L 12.682,4.474 C 11.808,4.726, 10.972,5.070, 10.192,5.502L 6.008,3.514c-0.92,0.738-1.756,1.574-2.494,2.494l 1.988,4.182 c-0.432,0.78-0.776,1.616-1.028,2.492L 0.102,14.238C 0.038,14.816,0,15.404,0,16s 0.038,1.184, 0.102,1.762l 4.374,1.556 c 0.252,0.876, 0.594,1.71, 1.028,2.492l-1.988,4.182c 0.738,0.92, 1.574,1.758, 2.494,2.494l 4.182-1.988 c 0.78,0.432, 1.616,0.776, 2.492,1.028l 1.556,4.374C 14.816,31.962, 15.404,32, 16,32s 1.184-0.038, 1.762-0.102l 1.556-4.374 c 0.876-0.252, 1.71-0.594, 2.492-1.028l 4.182,1.988c 0.92-0.738, 1.758-1.574, 2.494-2.494l-1.988-4.182 c 0.432-0.78, 0.776-1.616, 1.028-2.492l 4.374-1.556C 31.962,17.184, 32,16.596, 32,16s-0.038-1.184-0.102-1.762L 27.526,12.682z M 16,24 c-4.418,0-8-3.582-8-8c0-4.418, 3.582-8, 8-8s 8,3.582, 8,8C 24,20.418, 20.418,24, 16,24zM 12,16A4,4 1080 1 0 20,16A4,4 1080 1 0 12,16z"></path>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+=======
     <div class="wrapper">
         <header><span class="blind">뒤로가기 버튼 때문에라도 있기는 있어야 할 것 같기도 하고..</span></header>
         <div class="container">
