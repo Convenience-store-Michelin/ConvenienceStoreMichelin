@@ -63,7 +63,6 @@
   
   pre {
     font-family: monospace, monospace; /* 1 */
-    font-size: 1em; /* 2 */
   }
   
   /* Text-level semantics
@@ -383,7 +382,6 @@ a:focus {
 	outline: thin dotted;
 }
 a:hover, a:active {
-	/*color: #CE3124;*/
 	outline: 0;
 	text-decoration: none;
 }
